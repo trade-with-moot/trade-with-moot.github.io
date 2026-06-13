@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>trade-with-moot — an AI trading in public</title>
+<meta name="description" content="trade-with-moot is an AI trading a real money account in public for three years — an experiment in radical transparency. Entertainment, not financial advice.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/icon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<style>
+  :root { --ink:#0e1116; --sub:#5b6471; --line:#e6e8ec; --tea:#1f7a5a; --tea-soft:#f0f6f3; --bg:#fbfcfd; }
+  * { box-sizing:border-box; }
+  body { margin:0; font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; color:var(--ink); background:var(--bg); }
+  .wrap { max-width:720px; margin:0 auto; padding:0 24px; }
+  /* brand bar */
+  header.brand { border-bottom:1px solid var(--line); background:#fff; position:sticky; top:0; z-index:5; }
+  .brand-row { max-width:720px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+  .brand-link { display:inline-flex; align-items:center; gap:11px; text-decoration:none; border:0; }
+  .brand-icon { width:38px; height:38px; border-radius:10px; display:block; border:1px solid var(--line); }
+  .brand-name { font-weight:700; font-size:18px; color:var(--ink); letter-spacing:-.01em; }
+  .nav { display:flex; gap:18px; flex-wrap:wrap; }
+  .nav a { color:var(--sub); text-decoration:none; font-size:15px; border:0; }
+  .nav a:hover { color:var(--tea); }
+  /* hero */
+  .hero { padding:56px 0 8px; }
+  .hero-icon { width:84px; height:84px; border-radius:20px; border:1px solid var(--line); display:block; margin:0 0 22px; }
+  h1 { font-size:36px; line-height:1.18; letter-spacing:-.015em; margin:0 0 8px; }
+  .lede { font-size:21px; color:var(--sub); margin:0 0 14px; }
+  .tea { color:var(--tea); }
+  h2 { font-size:14px; text-transform:uppercase; letter-spacing:.07em; color:var(--sub); margin:48px 0 12px; }
+  h3 { font-size:18px; margin:24px 0 6px; }
+  p { margin:0 0 16px; }
+  ul { padding-left:20px; margin:0 0 16px; }
+  li { margin:7px 0; }
+  a { color:var(--tea); }
+  .links { display:flex; flex-wrap:wrap; gap:10px; margin:10px 0 0; }
+  .links a { border:1px solid var(--line); border-radius:999px; padding:9px 17px; color:var(--ink); text-decoration:none; }
+  .links a:hover { border-color:var(--tea); color:var(--tea); }
+  .card { background:#fff; border:1px solid var(--line); border-radius:14px; padding:20px 22px; margin:14px 0; }
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  @media (max-width:560px){ .grid{ grid-template-columns:1fr; } h1{ font-size:30px; } }
+  .note { background:var(--tea-soft); border:1px solid #d3e7de; border-radius:12px; padding:16px 18px; }
+  footer { margin:64px 0 0; padding:24px 0 64px; border-top:1px solid var(--line); color:var(--sub); font-size:14px; }
+  footer a { color:var(--sub); }
+</style>
+</head>
+<body>
+<header class="brand">
+  <div class="brand-row">
+    <a class="brand-link" href="/">
+      <img class="brand-icon" src="/icon.png" alt="trade-with-moot app icon" width="38" height="38">
+      <span class="brand-name">trade-with-moot</span>
+    </a>
+    <nav class="nav">
+      <a href="#about">About</a>
+      <a href="#how">How it works</a>
+      <a href="#app">The app</a>
+      <a href="#faq">FAQ</a>
+      <a href="/terms/">Terms</a>
+      <a href="/privacy/">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <section class="hero">
+    <img class="hero-icon" src="/icon.png" alt="trade-with-moot app icon" width="84" height="84">
+    <h1>trade&#8209;with&#8209;moot <span class="tea">&#127861;</span></h1>
+    <p class="lede">An AI trading a real money account &mdash; in public, every day, for three years.</p>
+    <p>trade&#8209;with&#8209;moot is an experiment in radical transparency. Every position weight, every rebalance, and the full equity curve are published openly and judged against the market over 1,095 days (2026&ndash;2029). No paid signals, no &ldquo;buy this now&rdquo; &mdash; just one AI&rsquo;s decisions, shown in the open.</p>
+    <div class="links">
+      <a href="https://tradewithmoot.streamlit.app">Live dashboard &rarr;</a>
+      <a href="https://github.com/trade-with-moot">GitHub</a>
+      <a href="https://www.tiktok.com/@trade_with_moot">TikTok</a>
+      <a href="https://www.instagram.com/trade_with_moot">Instagram</a>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>What it is</h2>
+    <p>Moot is an automated (&ldquo;AI&rdquo;) trading agent. It reads market data, weighs a blend of signals, sizes positions under fixed risk limits, and places real orders in a brokerage account &mdash; with no human picking the trades. Everything it does is logged and published the same day, win or lose. The point isn&rsquo;t to win; it&rsquo;s to answer one question honestly, in the open: <em>can an AI actually make money in the market over the long run?</em></p>
+    <div class="note">
+      <strong>Entertainment &amp; education, not financial advice.</strong> Nothing here is a recommendation to buy or sell any security. Markets carry risk, including loss of principal. Do your own research.
+    </div>
+  </section>
+
+  <section id="how">
+    <h2>How the experiment works</h2>
+    <div class="grid">
+      <div class="card"><h3>Real account</h3><p>Moot trades a funded brokerage account &mdash; not a simulation. Results are the real thing.</p></div>
+      <div class="card"><h3>Signals &amp; risk gates</h3><p>It blends several measurable signals into one score, then hard risk limits (caps per name, per theme, and stops) decide what&rsquo;s allowed.</p></div>
+      <div class="card"><h3>Public receipts</h3><p>Each market close, the day&rsquo;s result, holdings weights, and equity curve are posted to the live dashboard and social accounts.</p></div>
+      <div class="card"><h3>Three-year clock</h3><p>The experiment runs 1,095 days regardless of outcome. A losing stretch is on-thesis content, not something to hide.</p></div>
+    </div>
+  </section>
+
+  <section id="app">
+    <h2>The app &amp; how we publish</h2>
+    <p>trade&#8209;with&#8209;moot operates its own software to publish the project&rsquo;s daily content to the accounts we control. For TikTok, the application uses the <strong>TikTok Content Posting API</strong> to post <em>our own</em> videos and captions to <em>our own</em> <a href="https://www.tiktok.com/@trade_with_moot">@trade_with_moot</a> account. The app authenticates only to our accounts; it never reads, stores, or posts on behalf of any other user. See our <a href="/terms/">Terms of Service</a> and <a href="/privacy/">Privacy Policy</a> for the full detail.</p>
+  </section>
+
+  <section id="faq">
+    <h2>FAQ</h2>
+    <h3>Is this financial advice?</h3>
+    <p>No. It&rsquo;s a public experiment and entertainment. It is not investment, financial, legal, or tax advice, and not a recommendation to buy or sell anything.</p>
+    <h3>Do you sell signals or take money to recommend trades?</h3>
+    <p>Never. There are no paid signals, no &ldquo;DM for calls,&rdquo; and nothing for sale that influences what Moot does.</p>
+    <h3>Can I copy the trades?</h3>
+    <p>You can watch everything Moot does, but you shouldn&rsquo;t treat it as advice. What works for an experiment may be wrong for you.</p>
+    <h3>How long does it run?</h3>
+    <p>1,095 days &mdash; three years &mdash; from 2026 to 2029, with the full track record kept public throughout.</p>
+  </section>
+
+  <footer>
+    <p><strong>Entertainment, not financial advice.</strong> Nothing on this site is a recommendation to buy or sell any security. Markets carry risk; do your own research.</p>
+    <p><a href="/terms/">Terms of Service</a> &middot; <a href="/privacy/">Privacy Policy</a> &middot; <a href="mailto:liyingjie@journey-ai.net">Contact</a> &middot; &copy; 2026 trade&#8209;with&#8209;moot</p>
+  </footer>
+</div>
+</body>
+</html>
