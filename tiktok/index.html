@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TikTok integration — trade-with-moot</title>
+<meta name="description" content="How the trade-with-moot app uses TikTok's Login Kit and Content Posting API to publish our own daily recap videos to our own @tradewithmoot account.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<style>
+  :root { --ink:#0e1116; --sub:#5b6471; --line:#e6e8ec; --tea:#1f7a5a; --tea-soft:#f0f6f3; --bg:#fbfcfd; }
+  * { box-sizing:border-box; }
+  body { margin:0; font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; color:var(--ink); background:var(--bg); }
+  .wrap { max-width:760px; margin:0 auto; padding:0 24px; }
+  header.brand { border-bottom:1px solid var(--line); background:#fff; position:sticky; top:0; z-index:5; }
+  .brand-row { max-width:760px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; gap:14px; }
+  .brand-link { display:inline-flex; align-items:center; gap:11px; text-decoration:none; }
+  .brand-icon { width:38px; height:38px; border-radius:10px; border:1px solid var(--line); }
+  .brand-name { font-weight:700; font-size:18px; color:var(--ink); }
+  .nav { margin-left:auto; display:flex; gap:18px; flex-wrap:wrap; }
+  .nav a { color:var(--sub); text-decoration:none; font-size:15px; } .nav a:hover { color:var(--tea); }
+  h1 { font-size:32px; line-height:1.18; margin:48px 0 8px; }
+  .lede { font-size:20px; color:var(--sub); margin:0 0 8px; }
+  h2 { font-size:14px; text-transform:uppercase; letter-spacing:.07em; color:var(--sub); margin:44px 0 12px; }
+  h3 { font-size:18px; margin:22px 0 6px; }
+  p { margin:0 0 16px; } ul { padding-left:20px; } li { margin:7px 0; }
+  a { color:var(--tea); }
+  .shot { width:100%; max-width:420px; display:block; margin:8px auto 6px; border:1px solid var(--line); border-radius:16px; box-shadow:0 8px 30px rgba(14,17,22,.08); }
+  .cap { text-align:center; color:var(--sub); font-size:14px; margin:0 0 24px; }
+  .steps { counter-reset:s; list-style:none; padding:0; }
+  .steps li { counter-increment:s; position:relative; padding:14px 0 14px 52px; border-top:1px solid var(--line); }
+  .steps li::before { content:counter(s); position:absolute; left:0; top:14px; width:34px; height:34px; border-radius:50%; background:var(--tea-soft); color:var(--tea); border:1px solid #d3e7de; display:grid; place-items:center; font-weight:700; }
+  .steps b { display:block; }
+  .scopes { display:flex; flex-wrap:wrap; gap:8px; margin:6px 0 0; }
+  .scopes code { background:#f1f3f5; border-radius:6px; padding:4px 10px; font-size:14px; }
+  .note { background:var(--tea-soft); border:1px solid #d3e7de; border-radius:12px; padding:16px 18px; margin:18px 0; }
+  footer { margin:56px 0 0; padding:24px 0 64px; border-top:1px solid var(--line); color:var(--sub); font-size:14px; }
+  footer a { color:var(--sub); }
+</style>
+</head>
+<body>
+<header class="brand"><div class="brand-row">
+  <a class="brand-link" href="/"><img class="brand-icon" src="/icon.png" alt="trade-with-moot app icon" width="38" height="38"><span class="brand-name">trade-with-moot</span></a>
+  <nav class="nav"><a href="/">Home</a><a href="/#how">How it works</a><a href="https://tradewithmoot.streamlit.app">Live dashboard</a><a href="/terms/">Terms</a><a href="/privacy/">Privacy</a></nav>
+</div></header>
+
+<div class="wrap">
+  <h1>How we use TikTok &#127861;</h1>
+  <p class="lede">Our app publishes <strong>our own</strong> daily recap videos to <strong>our own</strong> <a href="https://www.tiktok.com/@trade_with_moot">@trade_with_moot</a> account &mdash; nothing more.</p>
+  <p>trade&#8209;with&#8209;moot runs a public, 3&#8209;year AI&#8209;trading experiment. Each U.S. market close, our software renders one short 9:16 &ldquo;Daily Close&rdquo; recap and posts it to our social accounts. On TikTok, it does this through TikTok&rsquo;s official <strong>Login Kit</strong> and <strong>Content Posting API</strong>.</p>
+
+  <h2>The publisher (in&#8209;app)</h2>
+  <img class="shot" src="/tiktok/publisher-ui.png" alt="Screenshot of the trade-with-moot TikTok Publisher console: connected account @tradewithmoot, granted scopes, the day's video, and a Publish to TikTok button.">
+  <p class="cap">Our TikTok Publisher console &mdash; connect the account, pick the day&rsquo;s video, publish to TikTok.</p>
+
+  <h2>What happens, step by step</h2>
+  <ol class="steps">
+    <li><b>Connect with TikTok (Login Kit)</b>The operator authorizes our own @trade_with_moot account on TikTok&rsquo;s consent screen. The browser returns to our verified domain (<code>trade-with-moot.github.io/tiktok/callback/</code>).</li>
+    <li><b>Pick the day&rsquo;s video</b>The app selects the freshly rendered Daily Close recap (a 9:16 MP4 we produced).</li>
+    <li><b>Publish via the Content Posting API</b>The app initializes an upload, sends the video file, and delivers it to the account &mdash; either straight to the profile (Direct Post) or to the creator inbox for a one&#8209;tap publish.</li>
+    <li><b>It appears on @trade_with_moot</b>The video is live on our own profile, posted entirely by our own integration.</li>
+  </ol>
+
+  <h2>Permissions we request</h2>
+  <div class="scopes"><code>user.info.basic</code><code>video.upload</code><code>video.publish</code></div>
+  <p style="margin-top:12px"><code>user.info.basic</code> confirms which account we&rsquo;re connected to; <code>video.upload</code> and <code>video.publish</code> let the app upload and post <em>our own</em> recap videos to <em>our own</em> account.</p>
+
+  <div class="note"><strong>First-party only.</strong> The app authenticates solely to accounts we own and posts solely our own content. It never reads, stores, or posts on behalf of any other TikTok user, and it requests no data beyond the account it is connected to.</div>
+
+  <h2>The wider project</h2>
+  <p>Every position weight, rebalance, and the full equity curve are public on our <a href="https://tradewithmoot.streamlit.app">live dashboard</a>, judged against the market over 1,095 days. It is entertainment and education &mdash; <strong>not financial advice</strong>.</p>
+
+  <footer>
+    <p><strong>Entertainment, not financial advice.</strong> Nothing here is a recommendation to buy or sell any security.</p>
+    <p><a href="/">Home</a> &middot; <a href="/terms/">Terms of Service</a> &middot; <a href="/privacy/">Privacy Policy</a> &middot; <a href="mailto:liyingjie@journey-ai.net">Contact</a> &middot; &copy; 2026 trade&#8209;with&#8209;moot</p>
+  </footer>
+</div>
+</body>
+</html>
